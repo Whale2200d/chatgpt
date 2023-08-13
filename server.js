@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const API_KEY = "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";
+const API_KEY = process.env.API_KEY;
 
 app.post("/completions", async (req, res) => {
   const options = {
@@ -34,3 +34,29 @@ app.post("/completions", async (req, res) => {
 
 const PORT = 8000;
 app.listen(PORT, () => console.log("Your server is running on PORT " + PORT));
+
+// const { Configuration, OpenAIApi } = require("openai");
+
+// const configuration = new Configuration({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
+// const openai = new OpenAIApi(configuration);
+
+// async function getChatGptResponse(request) {
+//   try {
+//     const completion = await openai.createChatCompletion({
+//       model: "gpt-3.5-turbo",
+//       messages: [
+//         { role: "system", content: "You are a helpful assistant." },
+//         { role: "user", content: "Hello world" },
+//       ],
+//     });
+//     console.log(completion.data.choices[0].message);
+//     return completion.data.choices[0].message.content;
+//   } catch (err) {
+//     console.log("Error: " + err);
+//     return err;
+//   }
+// }
+
+// getChatGptResponse();

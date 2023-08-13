@@ -8,3 +8,4 @@
   - cors @types/cors
   - express @types/express
   - nodemon
+- `npm install openai`

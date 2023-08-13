@@ -1,6 +1,28 @@
-import * as S from './styles';
+import * as S from "./styles";
 
 function ChatGpt() {
+  const options = {
+    method: "POST",
+    body: JSON.stringify({
+      message: "hello!",
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const getMessages = async () => {
+    try {
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        options
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <S.Container>
       <S.SideBarSection>
@@ -18,7 +40,7 @@ function ChatGpt() {
         <S.BottomSectionContainer>
           <S.InputContainer>
             <input />
-            <div>submit</div>
+            <div onClick={getMessages}>submit</div>
           </S.InputContainer>
           <S.InfoParagraph>
             Chat GPT Mar 14 Version. Free Research Preview. Our goal is to make
